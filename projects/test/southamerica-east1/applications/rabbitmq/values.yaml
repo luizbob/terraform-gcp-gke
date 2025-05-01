@@ -1,0 +1,47 @@
+auth:
+  username: admin
+  password: adminPassword #THIS SHOULD BE TREATED AS A EXAMPLE AND IS NOT RECOMMENDED TO BE USED.
+  # Better approach using Secret Manager and Terraform templatefile function:
+  # In main.tf:
+  # values = [
+  #   templatefile("${path.module}/rabbitmq/values.yaml.tpl", {
+  #     rabbitmq_password = data.google_secret_manager_secret_version.rabbitmq_password.secret_data
+  #   })
+  # ]
+  
+  # Then in values.yaml.tpl:
+  # auth:
+  #   username: admin
+  #   password: ${rabbitmq_password}
+persistence:
+  enabled: true
+  size: 8Gi
+  
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 200m
+
+service:
+  type: ClusterIP
+
+
+securityContext:
+  enabled: true
+  runAsUser: 1001
+  fsGroup: 1001
+
+
+rabbitmq-manager:
+  enabled: true
+
+# Habilitar plugins
+plugins: "rabbitmq_management rabbitmq_peer_discovery_k8s"
+
+
+clustering:
+  enabled: true
+  replicaCount: 3

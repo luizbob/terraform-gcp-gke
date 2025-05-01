@@ -1,0 +1,25 @@
+ingressController:
+  enabled: true
+  
+admin:
+  enabled: true
+  http:
+    enabled: true
+  servicePort: 8001
+  type: ClusterIP
+  
+proxy:
+  enabled: true
+  type: LoadBalancer
+  http:
+    enabled: true
+    servicePort: 80
+  tls:
+    enabled: true
+    servicePort: 443
+
+env:
+  database: "off"
+  
+postgresql:
+  enabled: false

@@ -1,0 +1,6 @@
+project_id     = "my-test-project-123"
+network_name   = "test-vpc"
+subnet_range   = "10.0.0.0/20"
+region         = "southamerica-east1"
+services_range = "10.128.0.0/20"
+pods_range     = "10.64.0.0/14"

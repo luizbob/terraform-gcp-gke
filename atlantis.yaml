@@ -1,0 +1,29 @@
+version: 3
+projects:
+- name: vpc
+  dir: projects/test/southamerica-east1/vpc
+  workflow: terragrunt
+  autoplan:
+    when_modified: ["*.tf", "*.hcl", "**/*.tf", "**/*.hcl"]
+    enabled: true
+- name: gke
+  dir: projects/test/southamerica-east1/gke
+  workflow: terragrunt
+  autoplan:
+    when_modified: ["*.tf", "*.hcl", "**/*.tf", "**/*.hcl"]
+    enabled: true
+- name: applications
+  dir: projects/test/southamerica-east1/applications
+  workflow: terragrunt
+  autoplan:
+    when_modified: ["*.tf", "*.hcl", "**/*.tf", "**/*.hcl", "chart/**"]
+    enabled: true
+
+workflows:
+  terragrunt:
+    plan:
+      steps:
+      - run: terragrunt plan -out=$PLANFILE
+    apply:
+      steps:
+      - run: terragrunt apply $PLANFILE

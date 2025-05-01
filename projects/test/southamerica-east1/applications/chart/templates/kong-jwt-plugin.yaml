@@ -1,0 +1,15 @@
+{{- if .Values.jwt.enabled -}}
+apiVersion: configuration.konghq.com/v1
+kind: KongPlugin
+metadata:
+  name: {{ include "sample-app.fullname" . }}-jwt-auth
+  labels:
+    {{- include "sample-app.labels" . | nindent 4 }}
+plugin: jwt
+config:
+  secret_is_base64: false
+  {{- if .Values.jwt.claimsToVerify }}
+  claims_to_verify:
+    {{- toYaml .Values.jwt.claimsToVerify | nindent 4 }}
+  {{- end }}
+{{- end }}

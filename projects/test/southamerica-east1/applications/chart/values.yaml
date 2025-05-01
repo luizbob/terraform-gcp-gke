@@ -1,0 +1,47 @@
+# Configurações padrão da aplicação
+replicaCount: 2
+
+image:
+  repository: nginxdemos/hello
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  name: ""
+
+podAnnotations: {}
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+# Configurações de ingress e autenticação
+ingress:
+  enabled: true
+  className: "kong"
+  annotations: {}
+  host: ""
+  path: "/api"
+  pathType: "Prefix"
+
+# Configurações de autenticação JWT
+jwt:
+  enabled: true  # Por padrão, desativado
+  claimsToVerify:
+    - exp
+  
+labels:
+  environment: "production"
+  team: "backend"
+  application: "sample-app"
+
+# Variáveis de ambiente adicionais
+env: []
