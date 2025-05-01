@@ -116,8 +116,8 @@ curl -i http://$KONG_IP/api
 ```bash
 # For JWT authentication, first create a token
 # This is a simple example - in real scenarios, use a proper JWT generator
-JWT_SECRET="your-jwt-secret"
-JWT_KEY="your-jwt-key"
+JWT_SECRET="app-secret"
+JWT_KEY="app-key"
 
 # Create a JWT token (requires jwt-cli or similar tool)
 export JWT_TOKEN=$(jwt encode --secret $JWT_SECRET --payload '{"sub":"test","exp":'$(($(date +%s)+3600))'}')
