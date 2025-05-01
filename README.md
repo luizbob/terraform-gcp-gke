@@ -27,6 +27,8 @@ The implemented solution consists of:
             │   ├── data.tf
             │   ├── main.tf
             │   ├── provider.tf
+            │   ├── rabbitmq
+            │   │   └── values.yaml
             │   ├── terraform.tfvars
             │   ├── terragrunt.hcl
             │   └── variables.tf
@@ -37,8 +39,6 @@ The implemented solution consists of:
             │   │   └── values.yaml
             │   ├── main.tf
             │   ├── provider.tf
-            │   ├── rabbitmq/
-            │   │   └── values.yaml
             │   ├── terraform.tfvars
             │   ├── terragrunt.hcl
             │   └── variables.tf
