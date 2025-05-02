@@ -146,7 +146,7 @@ kubectl port-forward svc/rabbitmq -n rabbitmq 15672:15672 5672:5672
 
 ### Private GKE Cluster
 
-We've chosen a private GKE cluster for enhanced security. With this approach:
+Chosen a private GKE cluster for enhanced security. With this approach:
 
 - Nodes don't have public IP addresses, reducing attack surface
 - The control plane is only accessible through authorized networks or IAP tunneling
@@ -155,7 +155,7 @@ We've chosen a private GKE cluster for enhanced security. With this approach:
 
 ### Kong API Gateway
 
-We selected Kong Gateway (OSS) for the following reasons:
+Selected Kong Gateway (OSS) for the following reasons:
 
 1. **Mature ecosystem**: Kong is a battle-tested solution with a large community and extensive plugin system
 2. **Performance**: Low overhead and high throughput capabilities
